@@ -52,11 +52,13 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt.token_blacklist",
     "silk", # pip install django-silk, django로 개발하면서 from django.db import connection를 사용하면서 매번 쿼리를 보기 불편하니 편하게 보게해주는거
     "drf_spectacular",  # pip install drf-spectacular, API 문서 만들기위한
+    "corsheaders",  # CORS 처리 패키지
     #   user app
     "articles",
     "accounts",
     "products",
     "chatgpt",
+
 ]
 
 #   미들웨어는 위에서부터 순서대로 통과된다.
@@ -69,6 +71,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "silk.middleware.SilkyMiddleware",   # pip install django-silk 해주고나서 여기에 추가해줘야함
+    'corsheaders.middleware.CorsMiddleware',    # CORS 처리 패키지
+    'django.middleware.common.CommonMiddleware',    # CORS 처리 패키지
 ]
 
 ROOT_URLCONF = "api_pjt.urls"
